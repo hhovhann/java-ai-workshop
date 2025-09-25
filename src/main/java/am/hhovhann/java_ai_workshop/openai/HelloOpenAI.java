@@ -14,7 +14,7 @@ public class HelloOpenAI {
         var apiKey = System.getenv("OPENAI_API_KEY");
         var body = """
                 {
-                    "model": "gpt-4o",
+                    "model": "gpt-4.1",
                     "messages": [
                         {
                             "role": "user",

@@ -2,7 +2,7 @@
 
 **Transform your Java skills for the AI era with this comprehensive Spring AI masterclass!**
 
-Are you a Java developer ready to harness the power of AI in your applications? This complete workshop takes you from AI fundamentals to building production-ready intelligent applications using Spring AI 1.0.
+Are you a Java developer ready to harness the power of AI in your applications? This complete workshop takes you from AI fundamentals to building production-ready intelligent applications using Spring AI 1.0.2.
 
 This repository contains all the source code, examples, and resources from the comprehensive 5.5-hour Spring AI course, designed to transform Java developers into AI-powered application builders.
 
@@ -85,7 +85,7 @@ Configure `src/main/resources/application.properties`:
 ```properties
 spring.application.name=ai-workshop
 spring.ai.openai.api-key=${OPENAI_API_KEY}
-spring.ai.openai.chat.options.model=gpt-4o
+spring.ai.openai.chat.options.model=gpt-4.1
 spring.threads.virtual.enabled=true
 
 # Local Ollama configuration
@@ -127,7 +127,7 @@ The application starts on `http://localhost:8080`
 
 ### Introduction & Setup
 
-**Getting Started: Your First AI Application** [`SimpleChatController.java`](src/main/java/dev/danvega/workshop/SimpleChatController.java)
+**Getting Started: Your First AI Application** [`SimpleChatController.java`](src/main/java/am/hhovhann/java_ai_workshop/SimpleChatController.java)
 
 ```java
 @RestController
@@ -164,7 +164,7 @@ AI is a broad discipline that includes various techniques. This workshop focuses
 
 #### Prompt Engineering Fundamentals
 
-Effective prompting is crucial for getting quality responses from LLMs. Example from [`ArticleController.java`](src/main/java/dev/danvega/workshop/prompt/ArticleController.java):
+Effective prompting is crucial for getting quality responses from LLMs. Example from [`ArticleController.java`](src/main/java/am/hhovhann/java_ai_workshop/prompt/ArticleController.java):
 
 ```java
 @GetMapping("/posts/new")
@@ -201,7 +201,7 @@ public String newPost(@RequestParam String topic) {
 
 #### Chat Clients & Streaming Responses
 
-**Basic Chat Implementation** [`ChatController.java`](src/main/java/dev/danvega/workshop/chat/ChatController.java):
+**Basic Chat Implementation** [`ChatController.java`](src/main/java/am/hhovhann/java_ai_workshop/chat/ChatController.java):
 
 ```java
 @GetMapping("/jokes-by-topic")
@@ -239,7 +239,7 @@ public ChatResponse jokeWithResponse(@RequestParam String message) {
 
 #### Structured Output with Type Safety
 
-Spring AI automatically converts LLM responses to Java objects [`VacationPlan.java`](src/main/java/dev/danvega/workshop/output/VacationPlan.java):
+Spring AI automatically converts LLM responses to Java objects [`VacationPlanController.java`](src/main/java/am/hhovhann/java_ai_workshop/output/VacationPlanController.java):
 
 ```java
 @GetMapping("/vacation/structured")
@@ -256,7 +256,7 @@ record Itinerary(List<Activity> itinerary) {}
 
 #### Multimodal AI: Images & Audio Processing
 
-**Image Analysis** [`ImageDetection.java`](src/main/java/dev/danvega/workshop/multimodal/image/ImageDetection.java):
+**Image Analysis** [`ImageDetection.java`](src/main/java/am/hhovhann/java_ai_workshop/multimodel/image/ImageDetection.java):
 
 ```java
 @GetMapping("/image-to-text")
@@ -271,7 +271,7 @@ public String image() throws IOException {
 }
 ```
 
-**Image Generation** [`ImageGeneration.java`](src/main/java/dev/danvega/workshop/multimodal/image/ImageGeneration.java):
+**Image Generation** [`ImageGeneration.java`](src/main/java/am/hhovhann/java_ai_workshop/multimodel/image/ImageGeneration.java):
 
 ```java
 @GetMapping("/generate-image")
@@ -283,7 +283,7 @@ public String generateImage(@RequestParam String prompt) {
 
 #### Chat Memory & Conversation State
 
-Maintain context across requests [`StatefulController.java`](src/main/java/dev/danvega/workshop/memory/StatefulController.java):
+Maintain context across requests [`StatefulController.java`](src/main/java/am/hhovhann/java_ai_workshop/memory/StatefulController.java):
 
 ```java
 public StatefulController(ChatClient.Builder builder) {
@@ -311,7 +311,7 @@ curl "http://localhost:8080/chat?message=What is my name?"
 
 #### Prompt Guarding & Security
 
-**Input Validation Guard** [`InputValidationGuardController.java`](src/main/java/dev/danvega/workshop/guards/InputValidationGuardController.java):
+**Input Validation Guard** [`InputValidationGuardController.java`](src/main/java/am/hhovhann/java_ai_workshop/guards/InputValidationGuardController.java):
 
 ```java
 @GetMapping("/input-validation")
@@ -339,7 +339,7 @@ public String inputValidation(@RequestParam String userInput) {
 }
 ```
 
-**Fact-Checking Guard** [`FactCheckingGuardController.java`](src/main/java/dev/danvega/workshop/guards/FactCheckingGuardController.java):
+**Fact-Checking Guard** [`FactCheckingGuardController.java`](src/main/java/am/hhovhann/java_ai_workshop/guards/FactCheckingGuardController.java):
 
 ```java
 @GetMapping("/fact-checking")
@@ -365,7 +365,7 @@ public String factChecking() {
 
 #### Retrieval Augmented Generation (RAG)
 
-Enhance responses with your own data [`ModelsController.java`](src/main/java/dev/danvega/workshop/rag/ModelsController.java):
+Enhance responses with your own data [`ModelsController.java`](src/main/java/am/hhovhann/java_ai_workshop/rag/ModelsController.java):
 
 ```java
 public ModelsController(ChatClient.Builder builder, VectorStore vectorStore) {
@@ -383,7 +383,7 @@ public String faq(@RequestParam String message) {
 }
 ```
 
-**RAG Configuration** [`RagConfiguration.java`](src/main/java/dev/danvega/workshop/rag/RagConfiguration.java):
+**RAG Configuration** [`RagConfiguration.java`](src/main/java/am/hhovhann/java_ai_workshop/rag/RagConfiguration.java):
 
 ```java
 @Bean
@@ -409,7 +409,7 @@ SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) throws IOExce
 
 #### Tools & Function Calling
 
-Extend LLM capabilities with custom tools [`WeatherController.java`](src/main/java/dev/danvega/workshop/tools/weather/WeatherController.java):
+Extend LLM capabilities with custom tools [`WeatherController.java`](src/main/java/am/hhovhann/java_ai_workshop/tools/weather/WeatherController.java):
 
 ```java
 @GetMapping("/weather")
@@ -422,7 +422,7 @@ public String weather(@RequestParam String city) {
 }
 ```
 
-**DateTime Tools** [`DatTimeTools.java`](src/main/java/dev/danvega/workshop/tools/datetime/DatTimeTools.java):
+**DateTime Tools** [`DatTimeTools.java`](src/main/java/am/hhovhann/java_ai_workshop/tools/datetime/DateTimeTools.java):
 
 ```java
 public class DatTimeTools {
@@ -438,7 +438,7 @@ public class DatTimeTools {
 }
 ```
 
-**Task Management Tools** [`TaskManagementTools.java`](src/main/java/dev/danvega/workshop/tools/action/TaskManagementTools.java):
+**Task Management Tools** [`TaskManagementTools.java`](src/main/java/am/hhovhann/java_ai_workshop/tools/action/TaskManagementTools.java):
 
 Action-based tools that can modify system state and take concrete actions.
 
@@ -446,7 +446,7 @@ Action-based tools that can modify system state and take concrete actions.
 
 #### Running Local Models with Ollama
 
-**Bring Your Own Data** [`ModelComparison.java`](src/main/java/dev/danvega/workshop/byod/ModelComparison.java):
+**Bring Your Own Data** [`ModelComparisonController.java`](src/main/java/am/hhovhann/java_ai_workshop/byod/ModelComparisonController.java):
 
 ```java
 @GetMapping("/models/stuff-the-prompt")
@@ -456,7 +456,7 @@ public String modelsWithData() {
             [
               {
                 "company": "OpenAI",
-                "model": "GPT-4o",
+                "model": "GPT-4.1",
                 "context_window_size": 128000
               },
               {
@@ -478,7 +478,7 @@ public String modelsWithData() {
 
 #### Observability with Prometheus & Grafana
 
-Spring Boot Actuator provides built-in metrics for AI operations. See the [Observability README](src/main/java/dev/danvega/workshop/observability/README.md) for detailed setup instructions.
+Spring Boot Actuator provides built-in metrics for AI operations. See the [Observability README](src/main/java/am/hhovhann/java_ai_workshop/observability/README.md) for detailed setup instructions.
 
 **Key Metrics to Monitor:**
 - Token usage and costs
@@ -488,7 +488,7 @@ Spring Boot Actuator provides built-in metrics for AI operations. See the [Obser
 
 #### Testing AI Applications & Model Evaluations
 
-**Sentiment Analysis Testing** [`SentimentAnalysisTest.java`](src/test/java/dev/danvega/workshop/evals/SentimentAnalysisTest.java):
+**Sentiment Analysis Testing** [`SentimentAnalysisTest.java`](src/test/java/am/hhovhann/java_ai_workshop/evals/SentimentAnalysisTest.java):
 
 ```java
 @Test
@@ -504,7 +504,7 @@ void shouldAnalyzeSentimentCorrectly() {
 }
 ```
 
-**Relevancy Evaluation** [`RelevancyEvaluatorTest.java`](src/test/java/dev/danvega/workshop/evals/RelevancyEvaluatorTest.java):
+**Relevancy Evaluation** [`RelevancyEvaluatorTest.java`](src/test/java/am/hhovhann/java_ai_workshop/evals/RelevancyEvaluatorTest.java):
 
 ```java
 @Test
@@ -522,7 +522,7 @@ void shouldEvaluateResponseRelevancy() {
 }
 ```
 
-**Fact-Checking Evaluation** [`FactCheckingEvaluatorTest.java`](src/test/java/dev/danvega/workshop/evals/FactCheckingEvaluatorTest.java):
+**Fact-Checking Evaluation** [`FactCheckingEvaluatorTest.java`](src/test/java/am/hhovhann/java_ai_workshop/evals/FactCheckingEvaluatorTest.java):
 
 ```java
 @Test
@@ -539,7 +539,7 @@ void shouldDetectFactualInaccuracies() {
 }
 ```
 
-**Structured Output Testing** [`StructuredOutputTest.java`](src/test/java/dev/danvega/workshop/evals/StructuredOutputTest.java):
+**Structured Output Testing** [`StructuredOutputTest.java`](src/test/java/am/hhovhann/java_ai_workshop/evals/StructuredOutputTest.java):
 
 ```java
 @Test
